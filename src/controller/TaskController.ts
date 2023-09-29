@@ -4,13 +4,13 @@ import { Task } from '../entities/Task';
 
 // Obtener todas las tareas
 const getAllTasks = async (req, res) => {
-  try {    
+  try {
     const tasks = await AppDataSource.manager.find(Task)
     console.log("Tareas cargadas: ", tasks)
     res.json(tasks);
   } catch (error) {
     console.error(error);
-    res.status(500).json({ message: 'Error al obtener las tareas.'});
+    res.status(500).json({ message: 'Error al obtener las tareas.' });
   }
 };
 
@@ -33,7 +33,7 @@ const getTaskById = async (req, res) => {
 const createTask = async (req, res) => {
   const { subject, description, completed } = req.body;
   try {
-    const task = AppDataSource.manager.create(Task, {subject, description ,completed});
+    const task = AppDataSource.manager.create(Task, { subject, description, completed });
     await AppDataSource.manager.save(task);
     res.status(201).json(task);
   } catch (error) {
@@ -47,7 +47,7 @@ const updateTask = async (req, res) => {
   const taskId = req.params.id;
   const { subject, description, completed } = req.body;
   console.log("new task", subject, description, completed);
-  try {    
+  try {
     const task = await AppDataSource.manager.findOne(Task, { where: { id: taskId } });
     if (!task) {
       return res.status(404).json({ message: 'Tarea no encontrada.' });
@@ -82,12 +82,12 @@ const deleteTask = async (req, res) => {
 };
 
 const deleteAllTasks = async (req, res) => {
-  
+
   try {
     const entities = AppDataSource.entityMetadatas;
     for (const entity of entities) {
-        const repository = AppDataSource.getRepository(entity.name);
-        await repository.clear(); // This deletes all rows from the table
+      const repository = AppDataSource.getRepository(entity.name);
+      await repository.clear(); // This deletes all rows from the table
     }
     res.json({ message: 'Todo ha sido eliminado' });
   } catch (error) {
@@ -97,9 +97,9 @@ const deleteAllTasks = async (req, res) => {
 };
 
 const sayHello = async (req, res) => {
-  
+
   try {
-  
+
     res.send("Hola desde del API 🎈");
   } catch (error) {
     console.error(error);
