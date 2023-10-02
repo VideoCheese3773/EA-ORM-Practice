@@ -14,7 +14,7 @@ userRouter.put('/users/:id', UserController.updateUser);
 // Eliminar una tarea por ID
 userRouter.delete('/users/:id', UserController.deleteUser);
 // Eliminar todas las tareas
-userRouter.delete('/users/', UserController.deleteAllusers);
+userRouter.delete('/users/', UserController.deleteAllUsers);
 
 //Saludar desde el API
 userRouter.get('/', UserController.sayHello);
