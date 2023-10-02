@@ -19,5 +19,5 @@ userRouter.delete('/users/', UserController.deleteAllUsers);
 //Saludar desde el API
 userRouter.get('/', UserController.sayHello);
 
-module.exports = router;
+module.exports = userRouter;
 
