@@ -4,7 +4,7 @@ const userRouter = userExpress.Router();
 const UserController = require('../controller/UserController');
 
 // Obtener todas las tareas
-userRouter.get('/users',UserController.getAllusers);
+userRouter.get('/users',UserController.getAllUsers);
 // Obtener una tarea por ID
 userRouter.get('/users/:id', UserController.getTaskById);
 // Crear una nueva tarea
